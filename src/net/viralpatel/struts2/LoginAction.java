@@ -8,12 +8,15 @@ public class LoginAction extends ActionSupport  {
 	 */
 	private static final long serialVersionUID = -7025202904193630399L;
 	
-	private String username;
+	// 和username变量名无关
+	private String username1;
 	private String password;
 
 	public String execute() {
-
-		if (this.username.equals("admin") && this.password.equals("admin")) {
+		
+		System.out.println("lbx ----------> execute");
+		
+		if (this.username1.equals("admin") && this.password.equals("admin")) {
 			return ActionSupport.SUCCESS;
 		} else {
 			addActionError(getText("error.login"));
@@ -21,12 +24,12 @@ public class LoginAction extends ActionSupport  {
 		}
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUsername1() {
+		return username1;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUsername1(String username) {
+		this.username1 = username;
 	}
 
 	public String getPassword() {

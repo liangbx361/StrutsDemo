@@ -12,19 +12,31 @@
 			<result-type name="tiles"
 				class="org.apache.struts2.views.tiles.TilesResult" />
 		</result-types>
-		
+
+		<!-- 执行逻辑控制 -->
 		<action name="Login" class="net.viralpatel.struts2.LoginAction">
 			<result name="success" type="tiles">/welcome.tiles</result>
 			<result name="error">login.jsp</result>
 		</action>
-		
+
 		<action name="customer" class="net.viralpatel.struts2.CustomerAction">
 			<result name="success" type="tiles">/customer.success.tiles</result>
 			<result name="input" type="tiles">/customer.tiles</result>
 		</action>
-		
+
 		<action name="customer-form">
 			<result name="success" type="tiles">/customer.tiles</result>
 		</action>
 	</package>
+
+	<package name="json" extends="json-default" namespace="/client">
+		<!-- 用来返回JSON数据  AndroidClientLogin -->
+		<action name="test" class="android.client.action.AndroidClientLoginAction"
+			method="test">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+	</package>
+	
 </struts>
