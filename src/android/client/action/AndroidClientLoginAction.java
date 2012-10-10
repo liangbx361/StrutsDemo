@@ -30,42 +30,44 @@ public class AndroidClientLoginAction extends ActionSupport {
 	//将会被Struts2序列化为JSON字符串的对象  
 	private Map<String, Object> dataMap;
 	
-	public AndroidClientLoginAction() {
-		dataMap = new HashMap<String, Object>();
-	}
-
-	@Override
-	public String execute() throws Exception {
-		
-		System.out.println("android client ----------> execute");
-		
-		if (this.username.equals("admin") && this.password.equals("admin")) {
-			return ActionSupport.SUCCESS;
-		} else {
-			addActionError(getText("error.login"));
-			return ActionSupport.ERROR;
-		}
-	}
+//	@Override
+//	public String execute() throws Exception {
+//		
+//		System.out.println("android client ----------> execute");
+//		
+//		if (this.username.equals("admin") && this.password.equals("admin")) {
+//			return ActionSupport.SUCCESS;
+//		} else {
+//			addActionError(getText("error.login"));
+//			return ActionSupport.ERROR;
+//		}
+//	}
 	
 	/**
 	 * 验证帐户
 	 * @return
 	 */
-//	public String verifyAccount() {
-	public String test() {
+	public String verifyAccount() {
 		
 		System.out.println("android client ----------> verifyAccount");
 		
-		User user = new User();  
-        user.setId("123");  
-        user.setName("JSONActionJSP");  
-        user.setPassword("123");  
-        user.setSay("Hello world !");  
-        JSONObject jsonObject=new JSONObject();  
-        jsonObject.accumulate("user", user);  
-        jsonObject.accumulate("success", true);  
-        //这里在request对象中放了一个data，所以struts的result配置中不能有type="redirect"  
-        ServletActionContext.getRequest().setAttribute("data", jsonObject.toString());  
+		dataMap = new HashMap<String, Object>(); 
+		if(username!= null && username.equals("admin") && password!=null && password.equals("admin")) {
+			dataMap.put("success", true);
+		} else {
+			dataMap.put("success", false);
+		}
+		 
+//        // dataMap中的数据将会被Struts2转换成JSON字符串，所以这里要先清空其中的数据   
+//        dataMap = new HashMap<String, Object>();   
+//        User user = new User();   
+//        user.setName("张三");   
+//        user.setPassword("123");   
+//        dataMap.put("user", user);   
+//        // 放入一个是否操作成功的标识   
+//        dataMap.put("success", true);   
+        
+        // 返回结果   
         return SUCCESS; 
 	}
 	

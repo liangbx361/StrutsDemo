@@ -31,9 +31,9 @@
 
 	<package name="json" extends="json-default" namespace="/client">
 		<!-- 用来返回JSON数据  AndroidClientLogin -->
-		<action name="test" class="android.client.action.AndroidClientLoginAction"
-			method="test">
-			<result type="json">
+		<action name="androidClientLogin" class="android.client.action.AndroidClientLoginAction"
+			method="verifyAccount">
+			<result name="success" type="json">
 				<param name="root">dataMap</param>
 			</result>
 		</action>
